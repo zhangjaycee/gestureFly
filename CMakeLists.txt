@@ -16,7 +16,7 @@ add_executable( flybin ${SRC_LIST} )
 target_link_libraries( flybin ${OpenCV_LIBS} )
 
 #添加包含的头文件（如果需要的话）
-#include_directories( /usr/local/include )
-#include_directories( /usr/local/include/opencv )
-#include_directories( /usr/local/include/opencv2 )
+include_directories( /usr/local/include )
+include_directories( /usr/local/include/opencv )
+include_directories( /usr/local/include/opencv2 )
 
