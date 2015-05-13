@@ -32,6 +32,6 @@ void sendControlStr()
     if(!open_error_flag){
         write(fd,ctrlStr, strlen(ctrlStr));
         printf("[send success] %s\n",ctrlStr);
-    }else
+    }//else
         printf("[send failed] %s\n",ctrlStr);
 }

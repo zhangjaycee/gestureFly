@@ -59,7 +59,7 @@ int main(int argc, char * argv[])
         return 1;
     }
     namedWindow("CT", CV_WINDOW_NORMAL);
-    setWindowProperty("CT", CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
+   // setWindowProperty("CT", CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
     // CT framework
     CompressiveTracker ct;
     capture.set(CV_CAP_PROP_FRAME_WIDTH, 320);
@@ -67,8 +67,10 @@ int main(int argc, char * argv[])
     //box Init
     box = Rect(130, 130, 60, 70);//Rect(x,y,width,height)
     int x0=box.x;
+	int xt=box.x;
     int y0=box.y;
     int dx=0,dy=0;
+	int dirFlag=0;//<0:lefting   >0:righting;
     // Run-time
     if(!open_error_flag)
        write(fd,unlock, strlen(unlock));
@@ -107,10 +109,13 @@ int main(int argc, char * argv[])
         // Display
         flip(frame, frame, 1);
         imshow("CT", frame);
-        dx=x0-box.x;
-        dy=y0-box.y;
+        //dx=x0-box.x;
+        dx=box.x-xt;
+//	printf("dx=%d\n",dx);
+		dy=y0-box.y;
+		xt=box.x;
         getGasValue(dy);
-        getDirValue(dx);
+        dirFlag=getDirValue(dx,dirFlag);
         calControlStr(gasValue,dirValue);
         sendControlStr();
         if ((c = waitKey(15)) == 27){

@@ -16,7 +16,7 @@ void gasDeToHex(int gasValue);
 void dirDeToHex(int dirValue);
 void calLast2(char * str);
 void getGasValue(int dy);
-void getDirValue(int dx);
+int  getDirValue(int dx,int dirFlag);
 void calControlStr(int gasValue,int dirValue);
 
 #endif // FLY_H

@@ -81,10 +81,46 @@ void getGasValue(int dy)
     }
     gasDeToHex(gasValue);
 }
-void getDirValue(int dx)
+int getDirValue(int dx,int dirFlag)
 {
+	if(dirFlag>0){
+		if(dx>=0){
+			dirValue=15;
+  	dirDeToHex(dirValue);
+			return 1;
+		}else if(dx<0){
+			dirValue=143;
+  	dirDeToHex(dirValue);
+			return -1;
+		}
+	}else if(dirFlag<0){
+		if(dx<=0){
+			dirValue=143;
+  	dirDeToHex(dirValue);
+			return -1;
+		}else if(dx>0){
+			dirValue=15;
+  	dirDeToHex(dirValue);
+			return 1;
+		}
+	}else{
+		if(dx<0){
+			dirValue=143;
+  	dirDeToHex(dirValue);
+			return -1;
+		}else if(dx>0){
+			dirValue=15;
+  	dirDeToHex(dirValue);
+			return 1;
+		}else {
+			dirValue=0;
+  			dirDeToHex(dirValue);
+			return 0;
+		}
+	}	
+/*
     if(dx>20){
-       dirValue=15;
+		dirValue=15;
         // if(dx>125)
           //  dx=125;
       //  dirValue=128+dx-20;
@@ -96,7 +132,8 @@ void getDirValue(int dx)
     }else{
         dirValue=0;
     }
-    dirDeToHex(dirValue);
+*/
+//	return dirFlag;
 }
 
 void calControlStr(int gasValue,int dirValue)
