@@ -97,13 +97,14 @@ int main(int argc, char * argv[])
         }
         // Process Frame
         skintracker(frame,skinmask);
+    imshow("fore", fore_frame);
         fore_frame = fore_frame.mul(skinmask);
         // CT initialization
         if(ctInitFlag){
             ct.init(fore_frame, box);
             ctInitFlag=0;
         }
-        //imshow("fore&skinmasked", fore_frame);
+    imshow("fore&skinmasked", fore_frame);
         ct.processFrame(fore_frame, box);
         rectangle(frame, box, Scalar(rgb_b,rgb_g,rgb_r));
         // Display
@@ -111,7 +112,7 @@ int main(int argc, char * argv[])
         imshow("CT", frame);
         //dx=x0-box.x;
         dx=box.x-xt;
-//	printf("dx=%d\n",dx);
+	printf("dx=%d\n",dx);
 		dy=y0-box.y;
 		xt=box.x;
         getGasValue(dy);

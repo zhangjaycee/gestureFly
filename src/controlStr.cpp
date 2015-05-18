@@ -84,32 +84,32 @@ void getGasValue(int dy)
 int getDirValue(int dx,int dirFlag)
 {
 	if(dirFlag>0){
-		if(dx>=0){
-			dirValue=15;
+		if(dx>=-3){
+			dirValue=30;
   	dirDeToHex(dirValue);
 			return 1;
-		}else if(dx<0){
-			dirValue=143;
+		}else if(dx<-3){
+			dirValue=157;
   	dirDeToHex(dirValue);
 			return -1;
 		}
 	}else if(dirFlag<0){
-		if(dx<=0){
-			dirValue=143;
+		if(dx<=3){
+			dirValue=157;
   	dirDeToHex(dirValue);
 			return -1;
-		}else if(dx>0){
-			dirValue=15;
+		}else if(dx>3){
+			dirValue=30;
   	dirDeToHex(dirValue);
 			return 1;
 		}
 	}else{
 		if(dx<0){
-			dirValue=143;
+			dirValue=157;
   	dirDeToHex(dirValue);
 			return -1;
 		}else if(dx>0){
-			dirValue=15;
+			dirValue=30;
   	dirDeToHex(dirValue);
 			return 1;
 		}else {
