@@ -112,11 +112,18 @@ int main(int argc, char * argv[])
         imshow("CT", frame);
         //dx=x0-box.x;
         dx=box.x-xt;
-	printf("dx=%d\n",dx);
+	//printf("dx=%d\n",dx);
 		dy=y0-box.y;
 		xt=box.x;
         getGasValue(dy);
         dirFlag=getDirValue(dx,dirFlag);
+        if(dirFlag==0){
+            printf("[dir now]middle");
+        }else if(dirFlag<0){
+            printf("[dir now]right");
+        }else{
+            printf("[dir now]left");
+        }
         calControlStr(gasValue,dirValue);
         sendControlStr();
         if ((c = waitKey(15)) == 27){

@@ -68,13 +68,13 @@ void getGasValue(int dy)
 {
    if(dy>0){
         if(dy<30){
-            gasValue=dy*4;
+            gasValue=dy*5;
         }else if(dy<60){
-            gasValue=(dy-30)*1+120;
+            gasValue=(dy-30)*1+150;
         }else if(dy<70){
-            gasValue=(dy-60)*0.8+150;
+            gasValue=(dy-60)*1+180;
         }else if(dy>=70){
-            gasValue=160;
+            gasValue=190;
         }
     }else{
         gasValue=0;
@@ -84,33 +84,41 @@ void getGasValue(int dy)
 int getDirValue(int dx,int dirFlag)
 {
 	if(dirFlag>0){
-		if(dx>=-3){
+		if(dx>2){
 			dirValue=30;
-  	dirDeToHex(dirValue);
+          	dirDeToHex(dirValue);
 			return 1;
 		}else if(dx<-3){
 			dirValue=157;
-  	dirDeToHex(dirValue);
+  	        dirDeToHex(dirValue);
 			return -1;
-		}
+		}else{
+			dirValue=0;
+  	        dirDeToHex(dirValue);
+			return 0;
+        }
 	}else if(dirFlag<0){
-		if(dx<=3){
+		if(dx<-2){
 			dirValue=157;
-  	dirDeToHex(dirValue);
+  	        dirDeToHex(dirValue);
 			return -1;
 		}else if(dx>3){
 			dirValue=30;
-  	dirDeToHex(dirValue);
+  	        dirDeToHex(dirValue);
 			return 1;
-		}
-	}else{
-		if(dx<0){
+		}else{
+			dirValue=0;
+  	        dirDeToHex(dirValue);
+			return 0;
+        }
+	}else{//dirflag==0
+		if(dx<-2){
 			dirValue=157;
-  	dirDeToHex(dirValue);
+          	dirDeToHex(dirValue);
 			return -1;
-		}else if(dx>0){
+		}else if(dx>2){
 			dirValue=30;
-  	dirDeToHex(dirValue);
+          	dirDeToHex(dirValue);
 			return 1;
 		}else {
 			dirValue=0;
